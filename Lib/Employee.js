@@ -1,3 +1,5 @@
+const Prompt = require("./Prompt")
+
 class Employee {
     constructor(name, id, email) {
         this.name = name;
@@ -23,40 +25,8 @@ class Employee {
     }
 }
 
-const bryce = new Employee("bryce", 1, "bryce@bryce.com");
+const bryce = new Employee("bryce", 5, "bryce@bryce.com");
 
-console.log(bryce.getName());
-console.log(bryce.getId());
-console.log(bryce.getEmail());
-console.log(bryce.getRole());
+console.log(bryce);
 
-
-
-// const inquirer = require("../node_modules/inquirer")
-
-// const prompts = function promptUser() {
-//     return inquirer.prompt([
-//         {
-//             type: "input",
-//             name: "name",
-//             message: "What is your name?"
-//         }, {
-//             type: "input",
-//             name: "id",
-//             message: "What is your ID number?"
-//         }, {
-//             type: "input",
-//             name: "email",
-//             message: "What is your email?"
-//         }, {
-//             type: "list",
-//             name: "role",
-//             message: "What is your role with the company?",
-//             choices: [
-//                 "engineer",
-//                 "manager",
-//                 "intern"
-//             ]
-//         }
-//     ]);
-// }
+module.exports = Employee;

@@ -1,4 +1,13 @@
-const Prompts = require("./lib/Prompts");
-const inquirer = require("./node_modules/inquirer/lib/inquirer")
+const inquirer = require("./node_modules/inquirer/lib/inquirer");
+const Employee = require("./lib/Employee");
+const Prompt = require("./lib/Prompt")
 
-userPrompts(); 
+
+var bryce = new Prompt();
+
+bryce.showPrompt();
+
+
+
+
+
