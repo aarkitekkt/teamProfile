@@ -1,10 +1,9 @@
 {
-  "name": "unit10hw",
+  "name": "teamprofile",
   "version": "1.0.0",
   "description": "OOP and testing for week 10 homework",
   "main": "app.js",
   "directories": {
-    "lib": "lib",
     "test": "test"
   },
   "scripts": {
@@ -14,11 +13,8 @@
     "type": "git",
     "url": ""
   },
-  "author": "",
+  "author": "aarkitekkt",
   "license": "ISC",
-  "bugs": {
-    "url": ""
-  },
   "homepage": "",
   "dependencies": {
     "inquirer": "^6.3.1"
