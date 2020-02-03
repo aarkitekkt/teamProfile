@@ -3,7 +3,7 @@ const inquirer = require("inquirer");
 class Prompt {
     constructor() {
 
-        var empData = inquirer.prompt([
+        return inquirer.prompt([
             {
                 type: "input",
                 name: "name",
@@ -27,13 +27,8 @@ class Prompt {
                 ]
             }
         ])
-
-        return empData;
     }
 
-    showPrompt() {
-        console.log(empData)
-    }
 }
 
 

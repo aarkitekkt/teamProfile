@@ -1,5 +1,3 @@
-const Prompt = require("./Prompt")
-
 class Employee {
     constructor(name, id, email) {
         this.name = name;
@@ -25,8 +23,8 @@ class Employee {
     }
 }
 
-const bryce = new Employee("bryce", 5, "bryce@bryce.com");
+// const bryce = new Employee("bryce", 5, "bryce@bryce.com");
 
-console.log(bryce);
+// console.log(bryce);
 
 module.exports = Employee;
