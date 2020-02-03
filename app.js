@@ -7,10 +7,85 @@ const Intern = require("./lib/Intern");
 
 const employees = [];
 
-promptUser();
+getEmployee();
+
+function getEmployee() {
+    promptUser()
+        .then(val => {
+            let e = new Employee(val.name, val.id, val.email);
+            if (val.role == "manager") {
+                return inquirer
+                    .prompt(
+                        {
+                            type: "input",
+                            name: "officeNumber",
+                            message: "What is your office number?"
+                        }
+                    )
+                    .then(val => {
+                        const mgr = new Manager(e.name, e.id, e.email, val.officeNumber);
+                        mgr.getRole();
+                        employees.push(mgr);
+                        console.log("Employee has been added!");
+                        console.log(employees);
+                    })
+            } else if (val.role == "engineer") {
+                return inquirer
+                    .prompt(
+                        {
+                            type: "input",
+                            name: "github",
+                            message: "What is your GitHub User Name?"
+                        }
+                    )
+                    .then(val => {
+                        const eng = new Engineer(e.name, e.id, e.email, val.github);
+                        eng.getRole();
+                        employees.push(eng);
+                        console.log("Employee has been added!");
+                        console.log(employees);
+                    })
+            } else if (val.role == "intern") {
+                return inquirer
+                    .prompt(
+                        {
+                            type: "input",
+                            name: "school",
+                            message: "What school did you go to?"
+                        }
+                    )
+                    .then(val => {
+                        const int = new Intern(e.name, e.id, e.email, val.school);
+                        int.getRole();
+                        employees.push(int);
+                        console.log("Employee has been added!");
+                        console.log(employees);
+                    })
+            }
+        })
+        .then(function () {
+            return inquirer
+                .prompt(
+                    {
+                        type: "confirm",
+                        name: "anotherEmployee",
+                        message: "Would you like to add another employee?"
+                    }
+                )
+        })
+        .then(val => {
+            if (val.anotherEmployee == true) {
+                console.log("Lets add a new employee!");
+                getEmployee();
+            } else {
+                console.log("Employee list has been created!");
+                return
+            }
+        })
+}
 
 function promptUser() {
-    inquirer
+    return inquirer
         .prompt([
             {
                 type: "input",
@@ -35,58 +110,8 @@ function promptUser() {
                 ]
             }
         ])
-        .then(val => {
-            let e = new Employee(val.name, val.id, val.email);
-            if (val.role == "manager") {
-                inquirer
-                    .prompt(
-                        {
-                            type: "input",
-                            name: "officeNumber",
-                            message: "What is your office number?"
-                        }
-                    )
-                    .then(val => {
-                        const mgr = new Manager(e.name, e.id, e.email, val.officeNumber);
-                        mgr.getRole();
-                        employees.push(mgr);
-                        console.log(employees);
-                    })
-            } else if (val.role == "engineer") {
-                inquirer
-                    .prompt(
-                        {
-                            type: "input",
-                            name: "github",
-                            message: "What is your GitHub User Name?"
-                        }
-                    )
-                    .then(val => {
-                        const eng = new Engineer(e.name, e.id, e.email, val.github);
-                        eng.getRole();
-                        employees.push(eng);
-                        console.log(employees);
-                    })
-            } else if (val.role == "intern") {
-                inquirer
-                    .prompt(
-                        {
-                            type: "input",
-                            name: "school",
-                            message: "What school did you go to?"
-                        }
-                    )
-                    .then(val => {
-                        const int = new Intern(e.name, e.id, e.email, val.school);
-                        int.getRole();
-                        employees.push(int);
-                        console.log(employees);
-                    })
-            }
-        })
-
-
 }
+
 
 
 
