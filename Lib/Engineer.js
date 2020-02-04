@@ -17,12 +17,4 @@ class Engineer extends Employee {
 }
 
 
-// var bryce = new Manager(101);
-// bryce.getRole();
-
-
-// console.log(bryce);
-// console.log(bryce.getOfficeNumber());
-
-
 module.exports = Engineer

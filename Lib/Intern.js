@@ -17,13 +17,4 @@ class Intern extends Employee {
 }
 
 
-// var bryce = new Intern("UofU");
-// bryce.getRole();
-
-
-// console.log(bryce);
-// console.log(bryce.getRole());
-// console.log(bryce.getSchool());
-
-
 module.exports = Intern

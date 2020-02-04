@@ -9,11 +9,12 @@ const employees = [];
 
 getEmployee();
 
+//Function to build array of employees from user input.
 function getEmployee() {
     promptUser()
         .then(val => {
             let e = new Employee(val.name, val.id, val.email);
-            if (val.role == "manager") {
+            if (val.role === "manager") {
                 return inquirer
                     .prompt(
                         {
@@ -29,7 +30,8 @@ function getEmployee() {
                         console.log("Employee has been added!");
                         console.log(employees);
                     })
-            } else if (val.role == "engineer") {
+
+            } else if (val.role === "engineer") {
                 return inquirer
                     .prompt(
                         {
@@ -45,7 +47,8 @@ function getEmployee() {
                         console.log("Employee has been added!");
                         console.log(employees);
                     })
-            } else if (val.role == "intern") {
+
+            } else if (val.role === "intern") {
                 return inquirer
                     .prompt(
                         {
@@ -84,6 +87,7 @@ function getEmployee() {
         })
 }
 
+//function to ask user questions to gather employee information.
 function promptUser() {
     return inquirer
         .prompt([
@@ -111,15 +115,3 @@ function promptUser() {
             }
         ])
 }
-
-
-
-
-
-
-
-
-
-
-
-
