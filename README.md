@@ -1,48 +1,51 @@
 # Team Profile Builder
-Repository: https://github.com/aarkitekkt/DayPlanner
-URL: https://aarkitekkt.github.io/DayPlanner/
-​
+
+Repository: https://github.com/aarkitekkt/teamProfile
+
 ## Overview
 ​
-The purpose of this application is to provide the user with a basic day planner that allows them to organize 
-their schedule in hourly increments and save them to local storage so their information is not lost when the page is refreshed.  Additionaly, each hour block will be assigned a color to show if it is in the past, present, or future.
+The purpose of this application is to generate an html team profile page based on CLI user input providing information on team members. 
 ​
 ### Gallery
 ​
-Home:
-![Page when loaded](./screenshots/main.JPG "Home page")
+Prompts:
+![Command Line Prompts](./screenshots/prompts.JPG "User Prompts")
 
-Local Storage:
-![Home Page View](./screenshots/localStorage.JPG "Local Storage")
+Deployed Page:
+![Home Page View](./screenshots/deployed.JPG "Deployed Page")
 ​
 Responsive Design:
-![Home Page View](./screenshots/responsive.JPG "Responsive Design")
+![Responsive](./screenshots/responsive.gif "Responsive Design")
 ​
 ### Problem
-The biggest challenge faced with this application was figuring out how to first, define the blank array that tasks are placed into and then replacing that initial variable with the array pulled from local storage.  I struggled with the local storage array being reset to its default blank state when the page was being reloaded.
-​
+
+The biggest challenge faced with this application was taking the array generated from the user inputs and appending that to an html file.  The difficulty came from have to generate different html depedning on the employee type and then dynmically append these cards to a main template page.
+
 ### Solution
 ​
-My solution was to assign the global variable as tge array pulled from local storage.  When the page is loaded for the first time, or the local storage is cleared, I used an if statement to determine if there was any data in local storage and if not, dynamically create the array and save it to local storage.
-​
+My solution was to first create a generateCard function that would first check to see the type of employee of each object and then return a template literal specific to that employee type that used "${expression}" placeholders that could pull relevent information from the employees array. 
+
+In the main html template, I used a map() and passed the generateCard function into that method to cycle through the employees array to generate each card for the employee.  
+
 ## Tech and Features Used
 ​
-* Bootstrap
+* Materialize CSS
 * Javascript
-* Moment.js
-* jQuery
-
-
+* Jest npm
+* Inquirer npm
+* Node JS
 ​
 ## How to use
 ​
-Simply type a task in the appropriate hour field and click the save button next to the task.
+First use "node app.js" in the command line to open the file and then answer the prompts for the manager information. Then proceed to use the prompts to add information for as many employees as desired.  When no more employees are needed, the HTML file is created containing a card for each employee displaying the collected data.s 
 ​
 ## Technical Overview
 ​
-1. The main array (tasks) contains an object showing the time and task for each hour listed and is pulled from local storage.
-2. A funtion (initiateTasks) runs to check if the tasks array contains any data.  If it does not, a function generates the array of objects showing the time and a blank task. If there is already data stored in local storage, a different function (showTasks) loops through the array and renders each task in the appropriate time block.
-3. Using moment.js, the current day and time are rendered into a <p> in the jumbotron element.
-4. A function (colorTimeBlocks) pulls the current hour from moment.js and compares that to each time blocks "data-hour" attribute and given whether it is less than, equal to, or greater, assigns a color to each time block to display if it is past, present, or future.
-5. When the user types a task into a time block and clicks the save icon, a fumction then takes that input, grabs its "data-index" attribute and splices the new object into the tasks array, replacing the old object in that index position.
-6. This array is saved in local storage so the information is not lost when the page is re loaded.
+1. A file "prompts.js" contains all of the user prompts for different employee types.
+2. When "node app.js" is ran in the command line, a buildTeam function is initiated and runs a function to prompt the user about information for the manager and then the manager data is pushed to an employees array.
+3. When the manager prompts finish, the employee prompt function runs ands asks the user questions about the first employee.
+4. A prompt asks if the employee is either an "intern" or "engineer". Depending on the answer, a title specific question is asked after which the employee data is pushed to an employees array.
+5. The next prompt asks if another employee is going to be added.  If the answer is yes, the promptEmployees function runs again.  If the answer is no, the writeHTML function is triggered and the html is generated for the team.
+6. A generateHTML function returns a template literal for the main html content of the page with a ${placeholder} where the employee cards will be generated.
+7. The placeholder contains a map method on the employees array generated from the prompts.  Passed through the map method is a generateCard function that checks the type of employee and returns the corresponding html for that employee type while grabbing the employee data to fill in the placeholders within the html template.
+8. Finally, using fs-writefile, the complete html is written to a new file called 'team.html' which is saved in the output folder.
