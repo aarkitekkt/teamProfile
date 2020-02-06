@@ -9,13 +9,13 @@ The purpose of this application is to generate an html team profile page based o
 ### Gallery
 ​
 Prompts:
-![Command Line Prompts](./screenshots/prompts.JPG "User Prompts")
+![Command Line Prompts](screengrabs/prompts.JPG "User Prompts")
 
 Deployed Page:
-![Home Page View](./screenshots/deployed.JPG "Deployed Page")
+![Home Page View](screenshots/deployed.JPG "Deployed Page")
 ​
 Responsive Design:
-![Responsive](./screenshots/responsive.gif "Responsive Design")
+![Responsive](screenshots/responsive.gif "Responsive Design")
 ​
 ### Problem
 
