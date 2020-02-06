@@ -12,10 +12,10 @@ Prompts:
 ![Command Line Prompts](screengrabs/prompts.JPG "User Prompts")
 
 Deployed Page:
-![Home Page View](screenshots/deployed.JPG "Deployed Page")
+![Home Page View](screengrabs/deployed.JPG "Deployed Page")
 ​
 Responsive Design:
-![Responsive](screenshots/responsive.gif "Responsive Design")
+![Responsive](screengrabs/responsive.gif "Responsive Design")
 ​
 ### Problem
 
